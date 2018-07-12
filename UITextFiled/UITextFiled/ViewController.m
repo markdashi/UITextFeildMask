@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 //MARK:输入框和键盘之间的间距
-static CGFloat INTERVAL_KEYBOARD = 30;
+static CGFloat INTERVAL_KEYBOARD = 500;
 
 @interface ViewController ()<UITextFieldDelegate>
 
@@ -20,7 +20,7 @@ static CGFloat INTERVAL_KEYBOARD = 30;
 
 @implementation ViewController
 {
-  NSDictionary *keyboardInfo;
+   NSDictionary *keyboardInfo;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -45,8 +45,8 @@ static CGFloat INTERVAL_KEYBOARD = 30;
     [self textFieldShouldBeginEditing:[self isFirstTextFieldResponder]];
 }
 - (void)keyboardWillHide:(NSNotification *)noti{
-    NSLog(@"keyboardWillHide : %@",noti.userInfo);
     keyboardInfo = noti.userInfo;
+    NSLog(@"keyboardWillHide : %@",noti.userInfo);
     [self animationWithkeybooard:^{
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
